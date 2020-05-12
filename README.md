@@ -10,7 +10,7 @@ A simple blog with the following features:
 $ sudo apt-get install python-dev mysql-server libmysqlclient-dev python-pip  
 $ sudo pip install Flask Flask-SQLAlchemy flask-mysql flask-login  
 $ sudo service mysql restart  
-$ mysql --user=root --password=root  
+$ mysql -u root -p  
 &nbsp;&nbsp;&nbsp;mysql> create database BlogDB;  
 &nbsp;&nbsp;&nbsp;mysql> exit;  
 $ git clone https://github.com/stbelousov/simple-blog.git  
