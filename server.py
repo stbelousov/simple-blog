@@ -11,7 +11,7 @@ logout_user, current_user, login_required
 #-------------------------------------------------------------------------------
 # App config
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/BlogDB'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root@localhost/BlogDB'
 app.config['CSRF_ENABLED'] = True
 app.config['SECRET_KEY'] = 'some_key'
 
