@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+	<!-- Register form -->
+	<form class="blog_form" method="post" autocomplete="off">
+		<ul>
+			<li>
+				<label for="username">Username:</label>
+				<input type="text" id="username" name="username" title="Username must be at least 4 characters length and contain only letters, digits and underscores" pattern="\w{4,}" value="{{ request.form.username }}" maxlength="25" required>
+			</li>
+			<li>
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" title="Password must be at least 8 characters length and include upper and lowercase letters and digits" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="{{ request.form.password }}" maxlength="25" required>
+			</li>
+			<li>
+				<label for="confirm_password">Confirm password:</label>
+				<input type="password" id="confirm_password" name="confirm_password" title="Password must match it's confirmation" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="{{ request.form.confirm_password }}" maxlength="25" required>
+			</li>
+			<li>
+				<button class="submit" type="submit">Submit</button>
+			</li>
+		</ul>
+	</form>
+
+	<!-- Form checkers -->
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function() {
+			var username = document.getElementById("username");
+			var password = document.getElementById("password");
+			var confirm_password = document.getElementById("confirm_password");
+
+			var checkUsername = function() {
+				username.setCustomValidity(username.validity.patternMismatch ? username.title : "");
+			};
+
+			var checkPassword = function() {
+				password.setCustomValidity(password.validity.patternMismatch ? password.title : "");
+				if(password.checkValidity()) {
+					confirm_password.pattern = password.value;
+					confirm_password.setCustomValidity(confirm_password.title);
+				} else {
+					confirm_password.pattern = password.pattern;
+					confirm_password.setCustomValidity("");
+				}
+			};
+
+			var checkPasswordConfirmation = function() {
+				confirm_password.setCustomValidity(confirm_password.validity.patternMismatch ? confirm_password.title : "");
+			};
+
+			username.addEventListener("keyup", checkUsername, false);
+			password.addEventListener("keyup", checkPassword, false);
+			confirm_password.addEventListener("keyup", checkPasswordConfirmation, false);
+
+			checkUsername();
+			checkPassword();
+			checkPasswordConfirmation();
+		}, false);
+	</script>
+	
+	<!-- Mark register button -->
+	<script type="text/javascript">
+		document.getElementById('register_button').classList.add('current');
+	</script>
+{% endblock %}
