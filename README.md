@@ -9,7 +9,7 @@ A simple blog with the following features:
 # Setup for Ubuntu
 $ sudo apt-get install python-dev python-mysqldb python-pip python-setuptools mysql-server libmysqlclient-dev  
 $ sudo pip install Flask Flask-SQLAlchemy flask-mysql flask-login  
-$ sudo mysql
+$ sudo mysql  
 &nbsp;&nbsp;&nbsp;mysql> create database BlogDB;  
 &nbsp;&nbsp;&nbsp;mysql> use mysql;  
 &nbsp;&nbsp;&nbsp;mysql> update user set plugin='mysql_native_password' where user='root';  
