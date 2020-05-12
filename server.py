@@ -4,8 +4,8 @@ import re
 
 from flask import Flask, request, render_template, flash, redirect, \
 g, url_for, jsonify
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager, login_user, \
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, login_user, \
 logout_user, current_user, login_required
 
 #-------------------------------------------------------------------------------
