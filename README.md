@@ -6,6 +6,8 @@ A simple blog with the following features:
 * User registration (only registered users can create posts and leave comments)
 * Access restrictions (only the author of a post can edit or remove it)
 
+A few screenshots are provided in the "example" folder.
+
 # Setup for Ubuntu
 $ sudo apt-get install python-dev python-mysqldb python-pip python-setuptools mysql-server libmysqlclient-dev  
 $ sudo pip install Flask Flask-SQLAlchemy flask-mysql flask-login  
