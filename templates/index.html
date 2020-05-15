@@ -11,13 +11,19 @@
 		{% endif %}
 		{% if posts and posts.items %}
 			<button class="submit" style="margin-left: 0px;"
-					formaction="{{url_for(url, tag = tag, page = posts.prev_num)}}"
-					{% if not posts.has_prev %} disabled {% endif %}>
+					{% if posts.has_prev %}
+						formaction="{{url_for(url, tag = tag, page = posts.prev_num)}}"
+					{% else %}
+						disabled
+					{% endif %}>
 				<< Prev page
 			</button>
 			<button class="submit" style="margin-left: 0px;"
-					formaction="{{url_for(url, tag = tag, page = posts.next_num)}}"
-					{% if not posts.has_next %} disabled {% endif %}>
+					{% if posts.has_next %}
+						formaction="{{url_for(url, tag = tag, page = posts.next_num)}}"
+					{% else %}
+						disabled
+					{% endif %}>
 				Next page >>
 			</button>
 			{% for post in posts.items %}
@@ -31,13 +37,19 @@
 			</li>
 			{% endfor %}
 			<button class="submit" style="margin-left: 0px;"
-					formaction="{{url_for(url, tag = tag, page = posts.prev_num)}}"
-					{% if not posts.has_prev %} disabled {% endif %}>
+					{% if posts.has_prev %}
+						formaction="{{url_for(url, tag = tag, page = posts.prev_num)}}"
+					{% else %}
+						disabled
+					{% endif %}>
 				<< Prev page
 			</button>
 			<button class="submit" style="margin-left: 0px;"
-					formaction="{{url_for(url, tag = tag, page = posts.next_num)}}"
-					{% if not posts.has_next %} disabled {% endif %}>
+					{% if posts.has_next %}
+						formaction="{{url_for(url, tag = tag, page = posts.next_num)}}"
+					{% else %}
+						disabled
+					{% endif %}>
 				Next page >>
 			</button>
 		{% else %}
