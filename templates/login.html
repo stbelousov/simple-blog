@@ -6,11 +6,11 @@
 		<ul>
 			<li>
 				<label for="username">Username:</label>
-				<input type="text" id="username" name="username" title="Username must be at least 4 characters length and contain only letters, digits and underscores" pattern="\w{4,}" value="{{ request.form.username }}" maxlength="25" required>
+				<input type="text" id="username" name="username" title="Username must be at least 4 characters long and contain only letters, digits, and underscores" pattern="\w{4,}" value="{{ request.form.username }}" maxlength="25" required>
 			</li>
 			<li>
 				<label for="password">Password:</label>
-				<input type="password" id="password" name="password" title="Password must be at least 8 characters length and include upper and lowercase letters and digits" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="{{ request.form.password }}" maxlength="25" required>
+				<input type="password" id="password" name="password" title="Password must be at least 8 characters long and include digits, uppercase and lowercase letters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="{{ request.form.password }}" maxlength="25" required>
 			</li>
 			<li>
 				<button class="submit" type="submit">Submit</button>

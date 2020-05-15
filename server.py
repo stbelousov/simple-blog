@@ -174,7 +174,7 @@ def register():
 		return render_template('register.html')
 	user = User(request.form['username'], request.form['password'])
 	if User.query.filter_by(username=user.username).first():
-		flash('Error: username already in use', 'error')
+		flash('Error: this username is already taken', 'error')
 		return render_template('register.html')
 	db.session.add(user)
 	db.session.commit()
@@ -253,7 +253,7 @@ def edit_post(post_id):
 		flash('No such post.', 'error')
 		return redirect(url_for('index'))
 	if g.user.username != post.author.username:
-		flash('Only author of the post can edit it.', 'error')
+		flash('Only the author of the post can edit it.', 'error')
 		return redirect(url_for('show_post', post_id=post_id))
 	if request.method == 'GET':
 		return render_template('edit_post.html', fill=PostForm(post))	
@@ -289,7 +289,7 @@ def delete_post(post_id):
 		flash('No such post.', 'error')
 		return redirect(url_for('index'))
 	if g.user.username != post.author.username:
-		flash('Only author of the post can delete it.', 'error')
+		flash('Only the author of the post can delete it.', 'error')
 		return redirect(url_for('show_post', post_id=post_id))
 	db.session.delete(post)
 	db.session.commit()
