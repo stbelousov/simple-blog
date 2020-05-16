@@ -6,7 +6,7 @@ A simple blog with the following features:
 * User registration (only registered users can create posts and leave comments)
 * Access restrictions (only the author of a post can edit or remove it)
 
-The implementation is based on Python, Flask, and MySQL.
+The implementation is based on Python, Flask, and MySQL.  
 A few screenshots are provided in the "example" folder.
 
 # Setup for Ubuntu
