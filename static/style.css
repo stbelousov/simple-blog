@@ -18,8 +18,8 @@
 	padding:3px;
 }
 .blog_form input {
-	height:20px; 
-	width:220px; 
+	height:20px;
+	width:220px;
 	padding:5px 8px;
 }
 .edit_form input {
@@ -42,16 +42,16 @@
 	outline: none;
 }
 .blog_form input, .blog_form textarea, .search_form input,
-.edit_form input, .edit_form textarea { 
+.edit_form input, .edit_form textarea {
 	border:1px solid #aaa;
 	box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
 	border-radius:2px;
 }
 .blog_form input:focus, .blog_form textarea:focus, .search_form input:focus,
 .edit_form input:focus, .edit_form textarea:focus {
-	background: #fff; 
-	border:1px solid #555; 
-	box-shadow: 0 0 3px #aaa; 
+	background: #fff;
+	border:1px solid #555;
+	box-shadow: 0 0 3px #aaa;
 }
 
 button.submit {
@@ -82,11 +82,11 @@ button.submit {
 }
 button.submit:hover {
 	opacity:.85;
-	cursor: pointer; 
+	cursor: pointer;
 }
 button.submit:active {
 	border: 1px solid #20911e;
-	box-shadow: 0 0 10px 5px #356b0b inset; 
+	box-shadow: 0 0 10px 5px #356b0b inset;
 	-webkit-box-shadow:0 0 10px 5px #356b0b inset ;
 	-moz-box-shadow: 0 0 10px 5px #356b0b inset;
 	-ms-box-shadow: 0 0 10px 5px #356b0b inset;
@@ -127,7 +127,7 @@ button.submit.current {
 }
 button.submit.current:active {
 	border: 1px solid #2f44b1;
-	box-shadow: 0 0 10px 5px #1e5e91 inset; 
+	box-shadow: 0 0 10px 5px #1e5e91 inset;
 	-webkit-box-shadow:0 0 10px 5px #1e5e91 inset ;
 	-moz-box-shadow: 0 0 10px 5px #1e5e91 inset;
 	-ms-box-shadow: 0 0 10px 5px #1e5e91 inset;

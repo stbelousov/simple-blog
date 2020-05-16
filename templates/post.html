@@ -34,12 +34,12 @@
 			<li>
 				<button style="margin-left:0px; padding:6px;"
 						type="button" class="submit"
-						id="like_button.post{{post.id}}" 
+						id="like_button.post{{post.id}}"
 						onclick="likePost({{post.id}})">
 					&#x2661; {{post.likes_cnt}}
 				</button>
 				<button style="margin-left:0px;"
-						type="submit" class="submit" 
+						type="submit" class="submit"
 						formaction="{{url_for('edit_post', post_id=post.id)}}">
 					Edit
 				</button>

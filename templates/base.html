@@ -14,29 +14,29 @@
 		<h3>Welcome, guest!</h3>
 	{% endif %}
 	<form>
-		<button id="timeline_button" class="submit" type="submit" 
+		<button id="timeline_button" class="submit" type="submit"
 				formaction="{{url_for('index')}}">
 			Timeline
 		</button>
 		{% if g.user.is_authenticated %}
-			<button id="myblog_button" class="submit" type="submit" 
+			<button id="myblog_button" class="submit" type="submit"
 					formaction="{{url_for('my_blog')}}">
 				My Blog
 			</button>
-			<button id="write_button" class="submit" type="submit" 
+			<button id="write_button" class="submit" type="submit"
 					formaction="{{url_for('write_post')}}">
 				Write Post
 			</button>
-			<button id="logout_button" class="submit" type="submit" 
+			<button id="logout_button" class="submit" type="submit"
 					formaction="{{url_for('logout')}}">
 				Logout
 			</button>
 		{% else %}
-			<button id="login_button" class="submit" type="submit" 
+			<button id="login_button" class="submit" type="submit"
 					formaction="{{url_for('login')}}">
 				Login
 			</button>
-			<button id="register_button" class="submit" type="submit" 
+			<button id="register_button" class="submit" type="submit"
 					formaction="{{url_for('register')}}">
 				Register
 			</button>
@@ -47,7 +47,7 @@
 	
 	<form class="search_form" method="post" autocomplete="off">
 		<input name="search_field" type="text" title="Tag must be non-empty and contain only letters, digits, and underscores" pattern="\w+" style="height:22px; width:130px;"; placeholder="Enter tag" required>
-		<button id="search_button" class="submit" type="submit" 
+		<button id="search_button" class="submit" type="submit"
 				formaction="{{url_for('search_form')}}">
 			Search
 		</button>
@@ -88,7 +88,7 @@
 				<form>
 					<button style="margin-left:0px; padding:6px;"
 							type="button" class="submit"
-							id="like_button.comment{{comment.id}}" 
+							id="like_button.comment{{comment.id}}"
 							onclick="likeComment({{comment.id}})">
 						&#x2661; {{comment.likes_cnt}}
 					</button>
