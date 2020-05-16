@@ -7,7 +7,7 @@ A simple blog with the following features:
 * Access restrictions (only the author of a post can edit or remove it)
 
 The implementation is based on Python, Flask, and MySQL.  
-A few screenshots are provided in the "example" folder.
+A few screenshots are provided in the "examples" folder.
 
 # Setup for Ubuntu
 $ sudo apt-get install python3-dev python3-mysqldb python3-pip python3-setuptools mysql-server libmysqlclient-dev  
