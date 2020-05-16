@@ -1,74 +1,74 @@
 {% extends "base.html" %}
 {% block title %}Timeline{% endblock %}
 {% block content %}
-	<!-- Timeline -->
-	<form class="blog_form">
-		<ul>
-		{% if url == "search_tag" %}
-		<li>
-			<h2>Posts with tag: <font color="blue">{{tag}}</font></h2>
-		</li>
-		{% endif %}
-		{% if posts and posts.items %}
-			<button class="submit" style="margin-left: 0px;"
-					{% if posts.has_prev %}
-						formaction="{{url_for(url, tag = tag, page = posts.prev_num)}}"
-					{% else %}
-						disabled
-					{% endif %}>
-				<< Prev page
-			</button>
-			<button class="submit" style="margin-left: 0px;"
-					{% if posts.has_next %}
-						formaction="{{url_for(url, tag = tag, page = posts.next_num)}}"
-					{% else %}
-						disabled
-					{% endif %}>
-				Next page >>
-			</button>
-			{% for post in posts.items %}
-			<li>
-				By <font color="blue">{{post.author.username}}</font>
-				at <font color="green">{{post.pub_time}}</font> </br>
-				<h3>{{post.title}}</h3>
-				{{post.text}} </br>
-				</br>
-				<a href="{{url_for('show_post', post_id=post.id)}}">Show post »</a>
-			</li>
-			{% endfor %}
-			<button class="submit" style="margin-left: 0px;"
-					{% if posts.has_prev %}
-						formaction="{{url_for(url, tag = tag, page = posts.prev_num)}}"
-					{% else %}
-						disabled
-					{% endif %}>
-				<< Prev page
-			</button>
-			<button class="submit" style="margin-left: 0px;"
-					{% if posts.has_next %}
-						formaction="{{url_for(url, tag = tag, page = posts.next_num)}}"
-					{% else %}
-						disabled
-					{% endif %}>
-				Next page >>
-			</button>
-		{% else %}
-			<li>
-				<h3>No recent entries.</h3>
-			</li>
-		{% endif %}
-		</ul>
-	</form>
+    <!-- Timeline -->
+    <form class="blog_form">
+        <ul>
+        {% if url == "search_tag" %}
+        <li>
+            <h2>Posts with tag: <font color="blue">{{tag}}</font></h2>
+        </li>
+        {% endif %}
+        {% if posts and posts.items %}
+            <button class="submit" style="margin-left: 0px;"
+                    {% if posts.has_prev %}
+                        formaction="{{url_for(url, tag = tag, page = posts.prev_num)}}"
+                    {% else %}
+                        disabled
+                    {% endif %}>
+                << Prev page
+            </button>
+            <button class="submit" style="margin-left: 0px;"
+                    {% if posts.has_next %}
+                        formaction="{{url_for(url, tag = tag, page = posts.next_num)}}"
+                    {% else %}
+                        disabled
+                    {% endif %}>
+                Next page >>
+            </button>
+            {% for post in posts.items %}
+            <li>
+                By <font color="blue">{{post.author.username}}</font>
+                at <font color="green">{{post.pub_time}}</font> </br>
+                <h3>{{post.title}}</h3>
+                {{post.text}} </br>
+                </br>
+                <a href="{{url_for('show_post', post_id=post.id)}}">Show post »</a>
+            </li>
+            {% endfor %}
+            <button class="submit" style="margin-left: 0px;"
+                    {% if posts.has_prev %}
+                        formaction="{{url_for(url, tag = tag, page = posts.prev_num)}}"
+                    {% else %}
+                        disabled
+                    {% endif %}>
+                << Prev page
+            </button>
+            <button class="submit" style="margin-left: 0px;"
+                    {% if posts.has_next %}
+                        formaction="{{url_for(url, tag = tag, page = posts.next_num)}}"
+                    {% else %}
+                        disabled
+                    {% endif %}>
+                Next page >>
+            </button>
+        {% else %}
+            <li>
+                <h3>No recent entries.</h3>
+            </li>
+        {% endif %}
+        </ul>
+    </form>
 
-	{% if url == "my_blog" %}
-		<!-- Mark the "my blog" button -->
-		<script type="text/javascript">
-			document.getElementById('myblog_button').classList.add('current');
-		</script>
-	{% elif url == "index" %}
-		<!-- Mark the timeline button -->
-		<script type="text/javascript">
-			document.getElementById('timeline_button').classList.add('current');
-		</script>
-	{% endif %}
+    {% if url == "my_blog" %}
+        <!-- Mark the "my blog" button -->
+        <script type="text/javascript">
+            document.getElementById('myblog_button').classList.add('current');
+        </script>
+    {% elif url == "index" %}
+        <!-- Mark the timeline button -->
+        <script type="text/javascript">
+            document.getElementById('timeline_button').classList.add('current');
+        </script>
+    {% endif %}
 {% endblock %}

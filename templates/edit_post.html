@@ -1,29 +1,29 @@
 {% extends "base.html" %}
 {% block title %}Edit post{% endblock %}
 {% block content %}
-	<!-- Edit form -->
-	<form class="edit_form" method="post" autocomplete="off">
-		<ul>
-			<li>
-				<input type="text" id="title" name="title" title="Title must be non-empty and contain only letters, digits, underscores, and spaces" pattern="\w[\w ]{0,38}\w|\w" value="{{ fill.title }}" maxlength="40" required>
-			</li>
-			<li>
-				<textarea name="text" id="text" cols="100" rows="40">{{ fill.text }}</textarea>
-			</li>
-			<li>
-				<label for="tags">Tags:</label>
-				<input type="text" id="tags" name="tags" title="Tags must contain only letters, digits, and underscores. Tags are separated by space" pattern="\w[\w ]*\w|\w|^$" value="{{ fill.tags }}">
-			</li>
-			<li>
-				<button type="submit" class="submit">Save</button>
-			</li>
-		</ul>
-	</form>
+    <!-- Edit form -->
+    <form class="edit_form" method="post" autocomplete="off">
+        <ul>
+            <li>
+                <input type="text" id="title" name="title" title="Title must be non-empty and contain only letters, digits, underscores, and spaces" pattern="\w[\w ]{0,38}\w|\w" value="{{ fill.title }}" maxlength="40" required>
+            </li>
+            <li>
+                <textarea name="text" id="text" cols="100" rows="40">{{ fill.text }}</textarea>
+            </li>
+            <li>
+                <label for="tags">Tags:</label>
+                <input type="text" id="tags" name="tags" title="Tags must contain only letters, digits, and underscores. Tags are separated by space" pattern="\w[\w ]*\w|\w|^$" value="{{ fill.tags }}">
+            </li>
+            <li>
+                <button type="submit" class="submit">Save</button>
+            </li>
+        </ul>
+    </form>
 
-	{% if url == "write_post" %}
-		<!-- Mark the "write post" button -->
-		<script type="text/javascript">
-			document.getElementById('write_button').classList.add('current');
-		</script>
-	{% endif %}
+    {% if url == "write_post" %}
+        <!-- Mark the "write post" button -->
+        <script type="text/javascript">
+            document.getElementById('write_button').classList.add('current');
+        </script>
+    {% endif %}
 {% endblock %}

@@ -1,110 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{% block title %}{% endblock %}</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="/static/style.css">
-	<script type="text/javascript" src="/static/jquery.js"></script>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script type="text/javascript" src="/static/jquery.js"></script>
 </head>
 <body>
-	<!-- User header -->
-	{% if g.user.is_authenticated %}
-		<h3>You are currently logged in as: <font color="blue">{{g.user.username}}</font></h3>
-	{% else %}
-		<h3>Welcome, guest!</h3>
-	{% endif %}
-	<form>
-		<button id="timeline_button" class="submit" type="submit"
-				formaction="{{url_for('index')}}">
-			Timeline
-		</button>
-		{% if g.user.is_authenticated %}
-			<button id="myblog_button" class="submit" type="submit"
-					formaction="{{url_for('my_blog')}}">
-				My Blog
-			</button>
-			<button id="write_button" class="submit" type="submit"
-					formaction="{{url_for('write_post')}}">
-				Write Post
-			</button>
-			<button id="logout_button" class="submit" type="submit"
-					formaction="{{url_for('logout')}}">
-				Logout
-			</button>
-		{% else %}
-			<button id="login_button" class="submit" type="submit"
-					formaction="{{url_for('login')}}">
-				Login
-			</button>
-			<button id="register_button" class="submit" type="submit"
-					formaction="{{url_for('register')}}">
-				Register
-			</button>
-		{% endif %}
-	</form>
+    <!-- User header -->
+    {% if g.user.is_authenticated %}
+        <h3>You are currently logged in as: <font color="blue">{{g.user.username}}</font></h3>
+    {% else %}
+        <h3>Welcome, guest!</h3>
+    {% endif %}
+    <form>
+        <button id="timeline_button" class="submit" type="submit"
+                formaction="{{url_for('index')}}">
+            Timeline
+        </button>
+        {% if g.user.is_authenticated %}
+            <button id="myblog_button" class="submit" type="submit"
+                    formaction="{{url_for('my_blog')}}">
+                My Blog
+            </button>
+            <button id="write_button" class="submit" type="submit"
+                    formaction="{{url_for('write_post')}}">
+                Write Post
+            </button>
+            <button id="logout_button" class="submit" type="submit"
+                    formaction="{{url_for('logout')}}">
+                Logout
+            </button>
+        {% else %}
+            <button id="login_button" class="submit" type="submit"
+                    formaction="{{url_for('login')}}">
+                Login
+            </button>
+            <button id="register_button" class="submit" type="submit"
+                    formaction="{{url_for('register')}}">
+                Register
+            </button>
+        {% endif %}
+    </form>
 
-	</br>
-	
-	<form class="search_form" method="post" autocomplete="off">
-		<input name="search_field" type="text" title="Tag must be non-empty and contain only letters, digits, and underscores" pattern="\w+" style="height:22px; width:130px;"; placeholder="Enter tag" required>
-		<button id="search_button" class="submit" type="submit"
-				formaction="{{url_for('search_form')}}">
-			Search
-		</button>
-	</form>
+    </br>
+    
+    <form class="search_form" method="post" autocomplete="off">
+        <input name="search_field" type="text" title="Tag must be non-empty and contain only letters, digits, and underscores" pattern="\w+" style="height:22px; width:130px;"; placeholder="Enter tag" required>
+        <button id="search_button" class="submit" type="submit"
+                formaction="{{url_for('search_form')}}">
+            Search
+        </button>
+    </form>
 
-	<hr>
+    <hr>
 
-	<!-- Notifications -->
-	<form class="blog_form">
-		<ul>
-			{% with messages = get_flashed_messages(with_categories=true) %}
-				{% if messages %}
-					<li>
-						{% for category, message in messages %}
-							{% if category == "error" %}
-								<h3 style="color: red;">{{ message }}</h3>
-							{% else %}
-								<h3>{{ message }}</h3>
-							{% endif %}
-						{% endfor %}
-					</li>
-				{% endif %}
-			{% endwith %}
-		</ul>
-	</form>
+    <!-- Notifications -->
+    <form class="blog_form">
+        <ul>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <li>
+                        {% for category, message in messages %}
+                            {% if category == "error" %}
+                                <h3 style="color: red;">{{ message }}</h3>
+                            {% else %}
+                                <h3>{{ message }}</h3>
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                {% endif %}
+            {% endwith %}
+        </ul>
+    </form>
 
-	<!-- Recursively renders comments to post -->
-	{% macro render_comment(comment) -%}
-		<div class="comment">
-			<li>
-				By <font color="blue">{{comment.author.username}}</font>
-				at <font color="green">{{comment.pub_time}}</font>
-			</li>
-			<li>
-				{{comment.text}}
-			</li>
-			<li>
-				<form>
-					<button style="margin-left:0px; padding:6px;"
-							type="button" class="submit"
-							id="like_button.comment{{comment.id}}"
-							onclick="likeComment({{comment.id}})">
-						&#x2661; {{comment.likes_cnt}}
-					</button>
-					<button style="margin-left:0px; padding:6px;"
-							type="submit" class="submit"
-							formaction="{{url_for('comment_for_comment', post_id=post.id, parent_id=comment.id)}}">
-						Reply
-					</button>
-				</form>
-			</li>
-			{% for child in comment.children %}
-				{{ render_comment(child) }}
-			{% endfor %}
-		</div>
-	{%- endmacro %}
+    <!-- Recursively renders comments to post -->
+    {% macro render_comment(comment) -%}
+        <div class="comment">
+            <li>
+                By <font color="blue">{{comment.author.username}}</font>
+                at <font color="green">{{comment.pub_time}}</font>
+            </li>
+            <li>
+                {{comment.text}}
+            </li>
+            <li>
+                <form>
+                    <button style="margin-left:0px; padding:6px;"
+                            type="button" class="submit"
+                            id="like_button.comment{{comment.id}}"
+                            onclick="likeComment({{comment.id}})">
+                        &#x2661; {{comment.likes_cnt}}
+                    </button>
+                    <button style="margin-left:0px; padding:6px;"
+                            type="submit" class="submit"
+                            formaction="{{url_for('comment_for_comment', post_id=post.id, parent_id=comment.id)}}">
+                        Reply
+                    </button>
+                </form>
+            </li>
+            {% for child in comment.children %}
+                {{ render_comment(child) }}
+            {% endfor %}
+        </div>
+    {%- endmacro %}
 
-	{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 </body>
 </html>
